@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= storeName %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= storeName %></h1>
+    <p>Welcome to <%= storeName %></p>
+    <h2>Available Books</h2>
+    <ul>
+      <% for (const book of books) { %>
+        <li><%= book.title %> by <%= book.author %></li>
+      <% } %>
+    </ul>
+    <script type="text/javascript">
+           document.getElementsByTagName('h2')[0].style.color = 'brown';
+        </script>
+  </body>
+</html>

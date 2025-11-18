@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All Products</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:Arial;background:#f8fafc;padding:30px}
+    .wrap{max-width:900px;margin:auto;background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    h1{color:#333}
+    table{width:100%;border-collapse:collapse;margin-top:12px}
+    th,td{padding:10px;border-bottom:1px solid #e9ecef;text-align:left}
+    th{background:#f1f5f9}
+    a.btn{padding:6px 10px;border-radius:6px;text-decoration:none;color:white;font-weight:700}
+    .edit{background:#ffc107} .del{background:#dc3545}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Product List</h1>
+
+    <% if (data.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th><th>Description</th><th>Price</th><th colspan="2">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(product => { %>
+            <tr>
+              <td><%= product.name %></td>
+              <td><%= product.description %></td>
+              <td><%= product.price %></td>
+              <td><a class="btn edit" href="/products/update_product/<%= product._id %>">Edit</a></td>
+              <td><a class="btn del" href="/products/delete_product/<%= product._id %>">Delete</a></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>No Products Found.</p>
+    <% } %>
+
+    <p style="margin-top:14px"><a href="/" style="color:#0d6efd;text-decoration:none">↩ Back to home</a></p>
+  </div>
+</body>
+</html>

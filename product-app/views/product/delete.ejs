@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Product</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:Arial;background:#fff3f3;padding:30px}
+    .box{max-width:520px;margin:auto;background:#fff;padding:22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-align:center}
+    h3{color:#dc3545}
+    .btn{display:inline-block;padding:10px 16px;border-radius:8px;color:white;text-decoration:none;font-weight:700;margin:8px}
+    .yes{background:#dc3545} .no{background:#6c757d}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h3>Delete Product</h3>
+    <p>Are you sure you want to delete <strong><%= product.name %></strong>?</p>
+
+    <form action="/products/delete_product/<%= product._id %>" method="POST" style="display:inline-block;margin-top:12px">
+      <button class="btn yes" type="submit">Yes, Delete</button>
+    </form>
+
+    <div style="margin-top:8px">
+      <a href="/products/retrieve_product" class="btn no">Cancel</a>
+    </div>
+  </div>
+</body>
+</html>

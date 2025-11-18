@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Manager - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family: Arial, sans-serif;background:linear-gradient(135deg,#f6f9fc,#e8f0ff);padding:40px}
+    .card{max-width:420px;margin:40px auto;background:white;padding:22px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.08);text-align:center}
+    a.btn{display:block;margin:10px 0;padding:12px;border-radius:8px;color:white;text-decoration:none;font-weight:600}
+    .create{background:#0d6efd} .list{background:#198754} .retrieve{background:#6c757d}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Product Manager</h1>
+    <p>Manage products (create, read, update, delete) and view paginated list.</p>
+
+    <a class="btn create" href="/products/create_product">➕ Create Product</a>
+    <a class="btn list" href="/products/listing_page">📄 Paginated Product List</a>
+    <a class="btn retrieve" href="/products/retrieve_product">📋 Retrieve All Products</a>
+  </div>
+</body>
+</html>

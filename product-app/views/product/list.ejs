@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Paginated Product List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body{font-family:Arial;background:#f3f6f9;padding:30px}
+    .wrap{max-width:760px;margin:auto;background:#fff;padding:18px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+    h2{color:#198754;text-align:center}
+    .list-group{list-style:none;padding:0;margin:0}
+    .item{display:flex;justify-content:space-between;align-items:center;padding:12px;border-bottom:1px solid #eef2f5}
+    .item strong{font-size:16px}
+    .actions a{margin-left:8px;padding:6px 10px;border-radius:6px;text-decoration:none;color:white}
+    .edit{background:#ffc107} .del{background:#dc3545}
+    .pager{display:flex;gap:8px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+    .page-btn{padding:6px 10px;border-radius:6px;text-decoration:none;background:#e9f2ff;color:#0d6efd}
+    .current{background:#0d6efd;color:white}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h2>Product List (Paginated)</h2>
+
+    <ul class="list-group">
+      <% products.forEach(product => { %>
+        <li class="item">
+          <strong><%= product.name.toUpperCase() %></strong>
+          <div class="actions">
+            <a class="edit" href="/products/update_product/<%= product._id %>">Edit</a>
+            <a class="del" href="/products/delete_product/<%= product._id %>">Delete</a>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+
+    <!-- pagination -->
+    <div class="pager">
+      <% if (pagination.hasPrevPage) { %>
+        <a class="page-btn" href="?page=1">First</a>
+        <a class="page-btn" href="?page=<%= pagination.prevPage %>">Prev</a>
+      <% } %>
+
+      <% for (let i = 1; i <= pagination.totalPages; i++) { %>
+        <% if (pagination.page === i) { %>
+          <span class="page-btn current"><%= i %></span>
+        <% } else { %>
+          <a class="page-btn" href="?page=<%= i %>"><%= i %></a>
+        <% } %>
+      <% } %>
+
+      <% if (pagination.hasNextPage) { %>
+        <a class="page-btn" href="?page=<%= pagination.nextPage %>">Next</a>
+        <a class="page-btn" href="?page=<%= pagination.totalPages %>">Last</a>
+      <% } %>
+    </div>
+
+    <p style="text-align:center;margin-top:14px"><a href="/" style="color:#0d6efd;text-decoration:none">↩ Home</a></p>
+  </div>
+</body>
+</html>

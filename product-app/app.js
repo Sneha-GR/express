@@ -3,11 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var apiRouter = require('./routes/api');
+const dotenv = require('dotenv');
+dotenv.config();
 
 // connect to DB (module will log connection status)
 require('./database/db');
 
 var productRouter = require('./routes/productRoutes');
+
 
 var app = express();
 
@@ -21,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use('/api', apiRouter);
 // mount product router at root — all routes in routes/productRoutes.js are used as-is
 app.use('/', productRouter);
 

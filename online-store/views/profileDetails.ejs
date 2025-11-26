@@ -1,0 +1,17 @@
+<% title = "Profile Details" %>
+
+<h1>User Product Details</h1>
+
+<div style="width: 300px; padding: 10px; border: 1px solid #ccc; border-radius: 10px;">
+    
+    <img 
+        src="data:image/jpeg;base64,<%= user.display_picture %>" 
+        alt="Profile Picture"
+        style="width: 100%; border-radius: 10px; margin-bottom: 10px;"
+    >
+
+    <p><strong>Product Name:</strong> <%= user.pname %></p>
+    <p><strong>Price:</strong> <%= user.price %></p>
+    <p><strong>Description:</strong> <%= user.desc %></p>
+
+</div>
